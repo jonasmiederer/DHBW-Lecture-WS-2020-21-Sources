@@ -178,3 +178,60 @@ Im Beispiel wird also das Ergebnis der Kalkulation ausgegeben, falls \code{num\_
 Dies bietet also den Vorteil, mögliche Fehler abzufangen und zu behandeln, anstatt das Programm zum Absturz zu führen.
 
     \end{frame}
+    
+    \begin{frame}[fragile]{Exception Handling - Beispiel aus der Realität (I)}
+Warum ist Exception Handling so wichtig?\\~\
+
+Beispiele aus der Realität zeigen, dass Exception Handling enorm wichtig ist, um ungewollte oder unerwartete Funktionsausfälle zu vermeiden. \\~\
+
+Ein System, in dem ein auftretender Fehler nicht korrekt behandelt wird, kann schwerwiegende finanzielle, technische oder auch soziale Folgen haben.
+    \end{frame}
+    
+    \begin{frame}[fragile]{Exception Handling - Beispiel aus der Realität (II))}
+Ein gutes Beispiel für fehlendes Exception Handling, was letztendlich schwerwiegende Konsequenzen mit sich brachte, ist der Flug 88 der europäischen Schwerlast-Trägerrakete \textbf{Ariane 5}.\\~\
+
+Am 04.Juni 1996 sollte die neu konstruierte Ariane 5 Rakete erstmals starten, mit der in Zukunft Kommunikationssatelliten transportiert und Starts der Hermes-Raumfähre ermöglicht werden sollten.\\~\
+
+Für die Trägerrakete sollte eine Zuverlässigkeit von 98-99\% erreicht werden, die maximal akzeptable Anzahl an Fehlstarten liegt demnach bei 1 bzw. 2 bei 100 Starts \cite{AAIA}.
+    \end{frame}
+    
+    \begin{frame}[fragile]{Exception Handling - Beispiel aus der Realität (III))}
+    
+    
+    \begin{minipage}{\textwidth}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{figure}
+\includegraphics[keepaspectratio, width=0.9\linewidth]{chapters/10_python4_further_topics/figures/ariane.jpeg}
+\caption{Die Explosion von Ariane 5 39 Sekunden nach dem Start}
+\end{figure} 
+\end{column}
+\begin{column}{0.5\textwidth}
+Etwa 39 Sekunden nach dem Start kam die Rakete von ihrem vorgegebenen Kurs ab, brach auseinander und sprengte sich in der Folge selbst.\\~\
+
+Die Entwicklungskosten der Ariane 5 lagen bei etwa 5,8 Milliarden Euro, der materielle Schaden von Rakete und Nutzlast lag bei etwa 290 Millionen Euro \cite{arianefailure}. Der wirtschaftliche Gesamtschaden dürfte aber deutlich größer sein, da durch diesen Unfall die komplette Entwicklung der Raketen komplett neu gestartet wurde, was zu enormen Verzögerungen führte. Bis ins Jahr 2003 wurden daraufhin primär die Vorgängermodelle Ariane 4 eingesetzt.
+
+\end{column}
+\end{columns}
+\end{minipage}
+
+
+
+    \end{frame}
+    
+    \begin{frame}[fragile]{Exception Handling - Beispiel aus der Realität (IV))}
+     \textbf{Was war passiert?} \\~\
+     
+     Mithilfe des Trägheitsnavigationssystems wird die horizontale Ausrichtung (\textit{"horizontal bias"}) des Flugkörpers bestimmt, also ob die Rakete nach oben oder nach unten zeigt. \\~\
+     Dieser Wert wurde in einer 64-Bit Variable gespeichert (Anzahl möglicher Werte: $2^{64}$), anschließend jedoch in eine 16-Bit Variable umgewandelt (Anzahl möglicher Werte: $2^{16}$ = 65.536). In den ersten Sekunden des Flugs war die Beschleunigung der Rakete eher gering, wodurch eine Umwandlung problemlos funktionierte. Erst als die Beschleunigung immer höher wurde, konnte die Zahl in der 64-Bit Variablen nicht mehr ohne Datenverlust in die 32-Bit Variable umgewandelt werden. Anders als in Python ist bei Ada, der damals verwendeten Programmiersprache, eine Umwandlung mit Datenverlust nicht ohne weiteres möglich, sodass dies zu einem \textit{arithmetischen Überlauf} führte.
+    \end{frame}
+    
+    \begin{frame}[fragile]{Exception Handling - Beispiel aus der Realität (V))}
+     Dieser unbehandelte Fehler führte zum Ausfall des Reserve- und Hauptnavigationssystems, was wiederum dazu führte, dass Lenk- und Lageinformationen nicht mehr bestimmt werden konnten.\\~\
+     Anstatt des eigentlichen Wertes war in der Variablen nun ein diagnostischer Wert gespeichert, welcher auf den aufgetretenen Fehler hinweisen sollte. Dieser Wert wurde aber vom Bordcomputer als normaler Flugwert interpretiert, wodurch eine große Abweichung von der vorgesehenen Flugbahn berechnet wurde. Die Düsen der Rakete wurden daraufhin auf eine Schwenkung von über 30 Grad pro Sekunde eingestellt, durch die starke Lufströmung aufgrund der noch dichteren Schichten in Erdnähe brachen die Düsen auseinander. In der Folge risssen die Verbindungen zwischen den Feststoffboostern und der Hauptstufe ab. Dies führte wie in einem solchen Fall vorgesehen zur Selbstzerstörung der Rakete.
+    \end{frame}
+    
+    \begin{frame}[fragile]{Exception Handling - Beispiel aus der Realität (VI))}
+     Ein solches Unglück aus der Realität zeigt also, welche Auswirkungen ein kleiner unbedeutend-scheinender Softwarefehler haben kann. \\~\
+     Außerdem macht dieses Beispiel deutlich, wie wichtig in einem produktiven Umfeld Fehlerbehandlung und Software Tests sind. Zwar werden die wenigsten von uns an der Softwareentwicklung einer Rakete mitwirken, doch auch in vielen anderen Projekten ist das Schadenspotential groß.
+    \end{frame}
