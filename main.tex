@@ -1,0 +1,181 @@
+\documentclass[xcolor=table, 9pt]{beamer}
+%\usepackage[utf8]{inputenc}
+%\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{MnSymbol}
+\usepackage{tikz}
+\usepackage{media9}
+\usetikzlibrary{arrows,shapes}
+\usepackage{stmaryrd}
+\usepackage{colortbl}
+\usepackage{caption}
+\usepackage{comment}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{pdfpages}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{soul}
+\usepackage[normalem]{ulem}
+
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{todonotes}
+\presetkeys{todonotes}{inline}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tcolorbox}
+\usepackage{lipsum}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{pgf}
+\usepackage{etex}
+\usepackage{tikz,pgfplots}
+
+\tikzstyle{every picture}+=[remember picture]
+% By default all math in TikZ nodes are set in inline mode. Change this to
+% displaystyle so that we don't get small fractions.
+\everymath{\displaystyle}
+
+
+\usetheme{Antibes}
+%\usetheme{Madrid}
+%\usecolortheme[named=Maroon]{structure}
+\usecolortheme{dolphin}
+\usefonttheme{professionalfonts}
+\useoutertheme{infolines}
+\useinnertheme{circles}
+
+\newtheorem*{bem}{Bemerkung}
+
+\usepackage{tikz}
+\usepackage{diagbox}
+
+\AtBeginSection[]{
+    \frame{
+        \frametitle{Inhaltsverzeichnis}
+        \tableofcontents[currentsection, currentsubsection]
+    }
+}
+
+\setbeamertemplate{caption}[numbered]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+\lstset{frame=tb,
+  aboveskip=2mm,
+  belowskip=12mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=2
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% MINTED
+
+\definecolor{light-gray}{gray}{0.95}
+\newcommand{\code}[1]{\colorbox{light-gray}{\texttt{#1}}}
+
+
+\usepackage{minted}
+\definecolor{codebg}{rgb}{0.98,0.98,0.98}
+
+\newminted{pycon}{%
+    frame=lines,
+    baselinestretch=1.2,
+    bgcolor=codebg,
+    linenos,
+    breaklines,
+    fontsize=\footnotesize,
+    frame=lines,
+    tabsize=4
+}
+
+\newminted{python}{%
+    frame=lines,
+    baselinestretch=1.2,
+    bgcolor=codebg,
+    linenos,
+    xleftmargin=20pt,
+    breaklines,
+    fontsize=\footnotesize,
+    frame=lines,
+    tabsize=4
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+\definecolor{good}{HTML}{9AFF99}
+\definecolor{medium}{HTML}{FFFE65}
+\definecolor{bad}{HTML}{FD6864}
+
+\hypersetup{colorlinks,linkcolor=,urlcolor=mauve}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[
+backend=biber,
+style=numeric,
+sorting=none
+]{biblatex}
+\addbibresource{bibliography.bib}
+
+%\usepackage{pgfpages}
+%\setbeameroption{show notes on second screen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% TITLE
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlegraphic{\includegraphics[height=2cm]{images/logo.jpg}}
+\title{Informatik 1}
+
+\author{Jonas Miederer}
+\institute{DHBW Stuttgart - Campus Horb}
+\logo{\includegraphics[height=1cm]{images/logo.jpg}}
+
+
+\begin{document}
+
+\shorthandoff{"}
+
+%\input{chapters/01_introduction/01_introduction.tex}
+%\input{chapters/02_computer_science/02_computer_science.tex}
+%\input{chapters/03_programming/03_programming.tex}
+%\input{chapters/04_programming_languages/04_programming_languages.tex}
+%\input{chapters/05_command_line/main}
+%\input{chapters/06_python1_introduction/main}
+%\input{chapters/07_python2_basics/main}
+%\input{chapters/08_ide/main}
+%\input{chapters/09_python3_control_flow/main.tex}
+\input{chapters/10_python4_further_topics/main}
+%\input{chapters/10_OOP/main}
+
+ \section{Bibliographie}
+        \begin{frame}[allowframebreaks]{Bibliographie}
+            \printbibliography
+\end{frame}
+
+
+
+\end{document}
